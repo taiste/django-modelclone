@@ -92,7 +92,7 @@ class ClonableModelAdmin(ModelAdmin):
                 form_validated = False
 
             prefixes = {}
-            for FormSet, inline in zip(self.get_formsets(request), inline_instances):
+            for FormSet, inline in zip(self.get_formsets_with_inlines(request), inline_instances):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1 or not prefix:
@@ -134,7 +134,7 @@ class ClonableModelAdmin(ModelAdmin):
             form = ModelForm(initial=initial)
 
             prefixes = {}
-            for FormSet, inline in zip(self.get_formsets(request), inline_instances):
+            for FormSet, inline in zip(self.get_formsets_with_inlines(request), inline_instances):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1 or not prefix:
